@@ -1,0 +1,42 @@
+{
+  "name": "webpack-externals-dllplugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engine": {
+    "node": ">=6 <7",
+    "npm": "> 3"
+  },
+  "scripts": {
+    "rimraf": "rimraf",
+    "clean:dist": "npm run rimraf -- dist",
+    "prebuild:umd": "npm run clean:dist",
+    "build": "npm run build:both",
+    "build:umd": "FORMAT=umd webpack --config webpack.config.js --progress --profile --display-error-details --display-cached",
+    "prebuild:dllplugin": "npm run clean:dist",
+    "build:dllplugin": "FORMAT=dllplugin webpack --config webpack.config.js --progress --profile --display-error-details --display-cached",
+    "prebuild:both": "npm run clean:dist",
+    "build:both": "FORMAT=both webpack --config webpack.config.js --progress --profile --display-error-details --display-cached",
+    "diff": "diff -Naur dist/main.umd.js dist/main.dllplugin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtabary/webpack-externals-dllplugin.git"
+  },
+  "author": "vtabary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vtabary/webpack-externals-dllplugin/issues"
+  },
+  "homepage": "https://github.com/vtabary/webpack-externals-dllplugin#readme",
+  "devDependencies": {
+    "rimraf": "^2.5.4",
+    "webpack": "^2.1.0-beta.27"
+  },
+  "dependencies": {
+    "@angular/core": "2.2.1",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "^0.19.41",
+    "zone.js": "0.6.21"
+  }
+}

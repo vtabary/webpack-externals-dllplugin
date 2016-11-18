@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Webpack umd / dllplugin</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script type="text/javascript" src="../node_modules/systemjs/dist/system.js"></script>
+        <script>
+          System.config({
+            baseURL: '.',
+            packages: {
+              '../dist': {
+                defaultJSExtensions: 'js'
+              }
+            },
+            meta: {
+              '*': {
+                format: 'amd'
+              }
+            },
+          });
+          System.import('../dist/main.umd')
+            .then(function (module) {
+              module('test');
+            });
+          System.import('../dist/main.dllplugin')
+            .then(function (module) {
+              module('test');
+            });
+        </script>
+    </head>
+    <body>
+      Should alert the user.
+    </body>
+</html>
